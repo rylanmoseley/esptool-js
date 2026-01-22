@@ -461,6 +461,7 @@ class Transport {
    * @param {typeof import("w3c-web-serial").SerialOptions} serialOptions Serial Options for WebUSB SerialPort class.
    */
   async connect(baud = 115200, serialOptions: SerialOptions = {}) {
+    /* // the user site opens the port
     await this.device.open({
       baudRate: baud,
       dataBits: serialOptions?.dataBits,
@@ -469,6 +470,7 @@ class Transport {
       parity: serialOptions?.parity,
       flowControl: serialOptions?.flowControl,
     });
+    */
     this.baudrate = baud;
     this.readLoop();
   }
