@@ -210,7 +210,7 @@ class Transport {
    * Read from serial device and append to buffer
    */
   async readLoop() {
-    while (this.device.readable) {
+    while (this.device.readable && this.reader) {
       try {
         const { value, done } = await this.reader.read();
         if (done) {
