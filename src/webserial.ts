@@ -62,7 +62,7 @@ class Transport {
   public baudrate = 0;
   private traceLog = "";
   private lastTraceTime = Date.now();
-  private reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
+  public reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
   private buffer: Uint8Array = new Uint8Array(0);
   private onDeviceLostCallback: (() => void) | null = null;
 
@@ -211,7 +211,6 @@ class Transport {
    */
   async readLoop() {
     while (this.device.readable) {
-      this.reader = this.device.readable?.getReader();
       try {
         const { value, done } = await this.reader.read();
         if (done) {
